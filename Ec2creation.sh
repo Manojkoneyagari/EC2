@@ -14,10 +14,11 @@ do
         --instance-type t3.micro \
         --key-name Key \
         --security-group-ids "common-ssh" "$instance-roboshop" \
-        --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=$instance-roboshop"}]' \
+        --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance-roboshop}]" \
         --query 'Instances[0].InstanceId' \
         --output text
     )
+
     echo " Instance ID: $InstanceID"
 
 
@@ -39,6 +40,7 @@ do
             --output text
             )
 
+            echo "Printing privateipaddress: $IP"
             Route53="$instance.manojkoney.store"
         fi
 
@@ -50,11 +52,11 @@ do
             "Comment": "Creating a new A record in Route53",
             "Changes": [
                 {
-                    "Action": "CREATE",
+                    "Action": "UPSERT",
                     "ResourceRecordSet": {
                         "Name": "'$Route53'",
                         "Type": "A",
-                        "TTL": 300,
+                        "TTL": 1,
                         "ResourceRecords": [
                             {
                                 "Value": "'$IP'"
