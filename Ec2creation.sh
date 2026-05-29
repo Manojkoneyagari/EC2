@@ -1,6 +1,6 @@
 #!/bin/bash
 
-AMI=ami-091138d0f0d41ff90
+AMI=ami-05cf1e9f73fbad2e2
 ZONE_ID=Z07186583IUMEVUQL0IYT
 
 
@@ -23,7 +23,7 @@ do
     echo " Instance ID: $InstanceID"
 
 
-        if [ instance = "frontend" ]; then
+        if [ $instance = "frontend" ]; then
 
             IP=$(aws ec2 describe-instances \
             --instance-ids "$InstanceID" \
@@ -32,6 +32,7 @@ do
             )
 
             echo "Printing publicipaddress: $IP"
+            exit 0
 
         else
         
