@@ -9,11 +9,12 @@ for instance in $@
 do
 
     echo " Launching instance: $instance"
+
     InstanceID=$(aws ec2 run-instances \
         --image-id "$AMI" \
         --instance-type t3.micro \
         --key-name Key \
-        --security-group-ids "common-ssh" "$instance-roboshop" \
+        --security-groups "commom-ssh" "$instance-roboshop" \
         --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance-roboshop}]" \
         --query 'Instances[0].InstanceId' \
         --output text
