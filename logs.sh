@@ -1,7 +1,7 @@
 #!/bin/bash
 
 Source_Dir=$1
-Days=$(2:-12)
+Days=${2:-12}
 
 
 if [ -z $Source_Dir ]; then
