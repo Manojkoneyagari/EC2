@@ -11,15 +11,17 @@ if [ -z $Source_Dir ]; then
 
  if [ ! -d "$Source_Dir" ]; then
  echo " This Directory $Source_Dir doesn't exists, Provide proper path"
+ exit 1
  fi
  
   
+files=$(find "$Source_Dir" -name "*.log" -type f -mtime +$Days)
 
+if [ ! -z $files ]; then
+echo " We dont log files exits older then 12 days ago"
+exit 0
+fi
 
- files=$(find "$Source_Dir" -name "*.log" -type f -mtime +$Days)
-
-
- echo "Printing log lists $files"
 
  while read file
  do
