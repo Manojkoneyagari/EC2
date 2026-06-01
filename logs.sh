@@ -17,7 +17,7 @@ if [ -z $Source_Dir ]; then
   
 files=$(find "$Source_Dir" -name "*.log" -type f -mtime +$Days)
 
-if [ ! -z "$files" ]; then
+if [ ! -z $files ]; then
 echo " We dont log files exits older then 12 days ago"
 exit 0
 fi
