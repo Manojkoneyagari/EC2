@@ -23,7 +23,7 @@ exit 0
 fi
 
 
- while read file
+ while IFS= read -r file
  do
 
  echo  "$file"
