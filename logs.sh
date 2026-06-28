@@ -2,7 +2,7 @@
 
 Source_Dir=$1
 Days=${2:-12}
-
+#adding comment
 
 if [ -z $Source_Dir ]; then
  echo " [ ERROR ] This script required an argument: Source Directory"
